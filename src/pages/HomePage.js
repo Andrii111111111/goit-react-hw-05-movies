@@ -13,7 +13,7 @@ export const HomePage = () => {
       const fetchFilms = async () => {
         const films = await getFilms();
         console.log(films);
-        console.log(fetchFilms);
+        console.log(fetchedFilms);
         setFetchedFilms(films);
       };
       fetchFilms();
@@ -22,7 +22,7 @@ export const HomePage = () => {
     } finally {
       // setLoading(false);
     }
-  }, []);
+  }, [fetchedFilms]);
 
   return (
     <>

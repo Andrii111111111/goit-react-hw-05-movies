@@ -13,6 +13,7 @@ export const HomePage = () => {
       const fetchFilms = async () => {
         const films = await getFilms();
         console.log(films);
+        console.log(fetchFilms);
         setFetchedFilms(films);
       };
       fetchFilms();

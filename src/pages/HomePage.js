@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { getFilms } from 'components/GetFilms/GetFilms';
 
 export const HomePage = () => {
-  const [fetchedFilms, setFetchedFilms] = useState([]);
+  // const [fetchedFilms, setFetchedFilms] = useState([]);
   // const [error, setError] = useState(false);
   // const [loading, setLoading] = useState(false);
   // console.log(fetchedFilms);
@@ -13,8 +13,8 @@ export const HomePage = () => {
       const fetchFilms = async () => {
         const films = await getFilms();
         console.log(films);
-        console.log(fetchedFilms);
-        setFetchedFilms(films);
+        // console.log(fetchedFilms);
+        // setFetchedFilms(films);
       };
       fetchFilms();
     } catch (error) {
@@ -22,7 +22,7 @@ export const HomePage = () => {
     } finally {
       // setLoading(false);
     }
-  }, [fetchedFilms]);
+  }, []);
 
   return (
     <>

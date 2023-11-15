@@ -1,20 +1,18 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { getFilms } from 'components/GetFilms/GetFilms';
 
 export const HomePage = () => {
-  // const [fetchedFilms, setFetchedFilms] = useState([]);
+  const [fetchedFilms, setFetchedFilms] = useState([]);
   // const [error, setError] = useState(false);
   // const [loading, setLoading] = useState(false);
-  // console.log(fetchedFilms);
+  console.log(fetchedFilms);
   useEffect(() => {
     // setLoading(true);
     try {
       // setError(false);
       const fetchFilms = async () => {
         const films = await getFilms();
-        console.log(films);
-        // console.log(fetchedFilms);
-        // setFetchedFilms(films);
+        setFetchedFilms(films);
       };
       fetchFilms();
     } catch (error) {
@@ -28,14 +26,14 @@ export const HomePage = () => {
     <>
       <h1>Home</h1>
       <h2>Trending today</h2>
-      {/* {console.log(fetchedCountries.results)} */}
-      {
-        // <ul>
-        //   {fetchedCountries.results.map(dat => (
-        //     <li key={dat.id}>{dat}</li>
-        //   ))}
-        // </ul>
-      }
+
+      {fetchedFilms.length > 0 && (
+        <ul>
+          {fetchedFilms.results.map(dat => (
+            <li key={dat.id}>{dat.original_title}</li>
+          ))}
+        </ul>
+      )}
     </>
   );
 };

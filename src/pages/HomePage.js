@@ -5,14 +5,14 @@ export const HomePage = () => {
   const [fetchedFilms, setFetchedFilms] = useState([]);
   // const [error, setError] = useState(false);
   // const [loading, setLoading] = useState(false);
-  console.log(fetchedFilms);
+
   useEffect(() => {
     // setLoading(true);
     try {
       // setError(false);
       const fetchFilms = async () => {
-        const films = await getFilms();
-        setFetchedFilms(films);
+        const { results } = await getFilms();
+        setFetchedFilms(results);
       };
       fetchFilms();
     } catch (error) {
@@ -29,7 +29,7 @@ export const HomePage = () => {
 
       {fetchedFilms.length > 0 && (
         <ul>
-          {fetchedFilms.results.map(dat => (
+          {fetchedFilms.map(dat => (
             <li key={dat.id}>{dat.original_title}</li>
           ))}
         </ul>

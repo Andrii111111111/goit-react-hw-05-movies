@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 export const Home = () => {
   const [fetchedFilms, setFetchedFilms] = useState([]);
+  console.log(fetchedFilms.id);
   // const [error, setError] = useState(false);
   // const [loading, setLoading] = useState(false);
 

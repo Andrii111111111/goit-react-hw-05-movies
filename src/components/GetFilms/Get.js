@@ -51,12 +51,11 @@ export const getMoviesSearch = async query => {
   try {
     const { data } = await axios.get(
       `https://api.themoviedb.org/3/search/movie?api_key=fed317ab3be0f2b7619ff5ef4eb716b2`,
-      { params: { query: 'barby' } }
+      { params: { query: query } }
     );
-    console.log(data);
+
     return data;
   } catch (error) {
     throw new Error(error.message);
   }
 };
-getMoviesSearch();

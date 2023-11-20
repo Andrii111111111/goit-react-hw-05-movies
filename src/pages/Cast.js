@@ -1,5 +1,6 @@
 import { getCast } from 'components/GetFilms/Get';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export const Cast = () => {
   const [fetchedCast, setFetchedCast] = useState();
@@ -26,12 +27,16 @@ export const Cast = () => {
   return (
     <>
       <h1>Cast</h1>
-      {/* <img src={poster_path} alt={title} width={300} />
-      <p>
-        {genres.map(({ name, id }) => (
-          <span key={id}>{name}</span>
+
+      <ul>
+        {fetchedCast.cast.map(({ name, id, character, profile_path }) => (
+          <li key={id}>
+            <img src={profile_path} alt={name} width={300} />
+            <h3>{name}</h3>
+            <p>Character:{character}</p>
+          </li>
         ))}
-      </p> */}
+      </ul>
     </>
   );
 };

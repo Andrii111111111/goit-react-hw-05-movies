@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getSingleFilm } from '../components/GetFilms/Get';
 import { useParams } from 'react-router-dom';
-export const SingleFilm = () => {
+export const MovieDetails = () => {
   const moveId = useParams();
   // const id = moveId.moviesId;
   const [fetchedFilm, setFetchedFilm] = useState([moveId]);
@@ -46,7 +46,11 @@ export const SingleFilm = () => {
         ))}
       </p>
 
-      <img src={poster_path} alt={title} width={300} />
+      <img
+        src={'https://image.tmdb.org/t/p/w500' + poster_path}
+        alt={title}
+        width={300}
+      />
 
       {/* {fetchedFilms.length > 0 && (
         <ul>

@@ -1,6 +1,5 @@
 import { getCast } from 'components/GetFilms/Get';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 
 export const Cast = () => {
   const [fetchedCast, setFetchedCast] = useState();

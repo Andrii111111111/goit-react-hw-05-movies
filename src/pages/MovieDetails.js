@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { getSingleFilm } from '../components/GetFilms/Get';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import { Cast } from './Cast';
+import { Reviews } from './Reviews';
 export const MovieDetails = () => {
   const moveId = useParams();
   // const id = moveId.moviesId;
@@ -21,7 +23,7 @@ export const MovieDetails = () => {
     try {
       // setError(false);
       const fetchFilm = async () => {
-        const data = await getSingleFilm(346698);
+        const data = await getSingleFilm(175220);
 
         setFetchedFilm(data);
       };
@@ -35,32 +37,33 @@ export const MovieDetails = () => {
 
   return (
     <>
-      <h1>{title}</h1>
-      <p>User Score:{Math.round(vote_average) * 10}%</p>
-      <h2>Overview</h2>
-      <p>{overview}</p>
-      <h2>Genres</h2>
-      <p>
-        {genres.map(({ name, id }) => (
-          <span key={id}>{name}</span>
-        ))}
-      </p>
-
-      <img
-        src={'https://image.tmdb.org/t/p/w500' + poster_path}
-        alt={title}
-        width={300}
-      />
-
-      {/* {fetchedFilms.length > 0 && (
-        <ul>
-          {fetchedFilms.map(dat => (
-            <li key={dat.id}>
-              <Link to={`/movies/${dat.id}`}>{dat.original_title}</Link>
-            </li>
+      <>
+        <h1>{title}</h1>
+        <p>User Score:{Math.round(vote_average) * 10}%</p>
+        <h2>Overview</h2>
+        <p>{overview}</p>
+        <h2>Genres</h2>
+        <p>
+          {genres.map(({ name, id }) => (
+            <span key={id}>{name}</span>
           ))}
-        </ul>
-      )} */}
+        </p>
+
+        <img
+          src={'https://image.tmdb.org/t/p/w500' + poster_path}
+          alt={title}
+          width={300}
+        />
+      </>
+      <>
+        <h3>Additional information</h3>
+        <li>
+          <Link to={`cast`}>Cast</Link>
+        </li>
+        <li>
+          <Link to={`reviews`}>Reviews</Link>
+        </li>
+      </>
     </>
   );
 };

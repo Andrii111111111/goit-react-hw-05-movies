@@ -34,7 +34,6 @@ export const getCast = async id => {
     throw new Error(error.message);
   }
 };
-getCast();
 
 export const getReviews = async id => {
   try {

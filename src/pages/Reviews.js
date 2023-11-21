@@ -2,18 +2,16 @@ import { getReviews } from 'components/GetFilms/Get';
 import { useEffect, useState } from 'react';
 
 export const Reviews = () => {
-  const [fetchedReviews, setFetchedReviews] = useState();
-
-  console.log(fetchedReviews);
+  const [fetchedReviews, setFetchedReviews] = useState([]);
 
   useEffect(() => {
     // setLoading(true);
     try {
       // setError(false);
-      const fetchFilm = async () => {
-        const data = await getReviews(670290);
+      const fetchFilm = async id => {
+        const { results } = await getReviews();
 
-        setFetchedReviews(data);
+        setFetchedReviews(results);
       };
       fetchFilm();
     } catch (error) {
@@ -25,13 +23,16 @@ export const Reviews = () => {
 
   return (
     <>
-      <h1>Reviews</h1>
-      {/* <img src={poster_path} alt={title} width={300} />
-      <p>
-        {genres.map(({ name, id }) => (
-          <span key={id}>{name}</span>
-        ))}
-      </p> */}
+      {fetchedReviews.length > 0 && (
+        <ul>
+          {fetchedReviews.map(({ id, content, author }) => (
+            <li key={id}>
+              <h3>Author:{author}</h3>
+              <p>{content}</p>
+            </li>
+          ))}
+        </ul>
+      )}
     </>
   );
 };

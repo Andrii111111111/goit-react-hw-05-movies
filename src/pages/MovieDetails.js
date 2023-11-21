@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { getSingleFilm } from '../components/GetFilms/Get';
 import { Link, useParams } from 'react-router-dom';
-import { Cast } from './Cast';
-import { Reviews } from './Reviews';
+// import { Cast } from './Cast';
+// import { Reviews } from './Reviews';
 export const MovieDetails = () => {
   const moveId = useParams();
   // const id = moveId.moviesId;

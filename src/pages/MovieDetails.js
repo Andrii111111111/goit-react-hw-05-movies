@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getSingleFilm } from '../components/GetFilms/Get';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import FilmInfo from './FilmInfo';
 // import { Cast } from './Cast';
 // import { Reviews } from './Reviews';

@@ -5,8 +5,10 @@ import { Link, useParams } from 'react-router-dom';
 // import { Reviews } from './Reviews';
 export const MovieDetails = () => {
   const moveId = useParams();
-  // const id = moveId.moviesId;
-  const [fetchedFilm, setFetchedFilm] = useState([moveId]);
+  const id = moveId.moveId;
+  console.log(id);
+
+  const [fetchedFilm, setFetchedFilm] = useState([]);
   const {
     poster_path,
     title,

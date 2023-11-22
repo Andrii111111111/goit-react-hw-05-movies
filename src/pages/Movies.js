@@ -7,8 +7,6 @@ export const Movies = () => {
   const [data, setData] = useState('');
   const [moviesSearch, setMoviesSearch] = useState([]);
 
-  console.log(data);
-
   //   const handleChange = evt => {
   //     // setData(evt.currentTarget.value);
   //   };
@@ -25,7 +23,7 @@ export const Movies = () => {
 
     // setData('');
   };
-
+  console.log(data);
   useEffect(() => {
     // setLoading(true);
     try {

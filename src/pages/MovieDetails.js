@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react';
 import { getSingleFilm } from '../components/GetFilms/Get';
 import { Link, useParams } from 'react-router-dom';
+import FilmInfo from './FilmInfo';
 // import { Cast } from './Cast';
 // import { Reviews } from './Reviews';
 export const MovieDetails = () => {
   const moveId = useParams();
-  const id = moveId.moveId;
-  console.log(id);
-
+  const id = moveId.movieId;
   const [fetchedFilm, setFetchedFilm] = useState([]);
   const {
     poster_path,
@@ -25,7 +24,7 @@ export const MovieDetails = () => {
     try {
       // setError(false);
       const fetchFilm = async () => {
-        const data = await getSingleFilm(175220);
+        const data = await getSingleFilm(id);
 
         setFetchedFilm(data);
       };
@@ -35,7 +34,7 @@ export const MovieDetails = () => {
     } finally {
       // setLoading(false);
     }
-  }, []);
+  }, [id]);
 
   return (
     <>
@@ -57,15 +56,15 @@ export const MovieDetails = () => {
           width={300}
         />
       </>
-      <>
-        <h3>Additional information</h3>
+
+      {/* <h3>Additional information</h3>
         <li>
           <Link to={`cast`}>Cast</Link>
         </li>
         <li>
           <Link to={`reviews`}>Reviews</Link>
-        </li>
-      </>
+        </li> */}
+      <FilmInfo />
     </>
   );
 };

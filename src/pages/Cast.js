@@ -9,7 +9,7 @@ export const Cast = () => {
     try {
       // setError(false);
       const fetchFilm = async () => {
-        const { cast } = await getCast();
+        const { cast } = await getCast(670292);
 
         setFetchedCast(cast);
       };
@@ -23,8 +23,6 @@ export const Cast = () => {
 
   return (
     <>
-     
-   
       {fetchedCast.length > 0 && (
         <ul>
           {fetchedCast.map(({ name, id, character, profile_path }) => (

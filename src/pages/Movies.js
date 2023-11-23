@@ -6,24 +6,22 @@ import { toast } from 'react-toastify';
 export const Movies = () => {
   const [data, setData] = useState('');
   const [moviesSearch, setMoviesSearch] = useState([]);
-
-  //   const handleChange = evt => {
-  //     // setData(evt.currentTarget.value);
-  //   };
+  const [currentData, setCurrentData] = useState('');
 
   const handleSubmit = evt => {
-    setData(evt.currentTarget.value);
+    setData(currentData);
     evt.preventDefault();
 
     if (data.trim() === '') {
       toast.error('Please enter your search details.');
       return;
     }
-    // onSubmit(data);
-
-    // setData('');
   };
-  console.log(data);
+
+  const handleChange = e => {
+    setCurrentData(e.currentTarget.value);
+  };
+
   useEffect(() => {
     // setLoading(true);
     try {
@@ -49,14 +47,14 @@ export const Movies = () => {
             <span className="button-label">Search</span>
           </button>
           <input
-            onChange={handleSubmit}
-            value={data}
+            onChange={handleChange}
+            // value={data}
             name="data"
             className="input"
             type="text"
             autoComplete="off"
             autoFocus
-            placeholder="Search images and photos"
+            placeholder="Search films"
           />
         </form>
       </header>

@@ -8,6 +8,7 @@ import { Movies } from "pages/Movies";
 
 
 
+
 export const App = () => {
   return (
     <>

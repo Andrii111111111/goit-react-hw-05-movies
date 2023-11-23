@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { getSingleFilm } from '../components/GetFilms/Get';
-import { useParams } from 'react-router-dom';
+import { Outlet, useParams } from 'react-router-dom';
 import FilmInfo from './FilmInfo';
+// import { Home } from './Home';
 // import { Cast } from './Cast';
 // import { Reviews } from './Reviews';
 export const MovieDetails = () => {
@@ -39,6 +40,9 @@ export const MovieDetails = () => {
   return (
     <>
       <>
+        {/* <Link to={<Home />}>
+          <button>Go home page</button>
+        </Link> */}
         <h1>{title}</h1>
         <p>User Score:{Math.round(vote_average) * 10}%</p>
         <h2>Overview</h2>
@@ -65,6 +69,7 @@ export const MovieDetails = () => {
           <Link to={`reviews`}>Reviews</Link>
         </li> */}
       <FilmInfo />
+      <Outlet />
     </>
   );
 };

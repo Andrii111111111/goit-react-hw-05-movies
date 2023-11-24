@@ -22,7 +22,7 @@ export const Reviews = () => {
     } finally {
       // setLoading(false);
     }
-  }, []);
+  }, [id]);
 
   return (
     <>

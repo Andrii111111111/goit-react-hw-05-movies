@@ -22,7 +22,7 @@ export const Cast = () => {
     } finally {
       // setLoading(false);
     }
-  }, []);
+  }, [id]);
 
   return (
     <>

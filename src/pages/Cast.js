@@ -1,15 +1,18 @@
 import { getCast } from 'components/GetFilms/Get';
 import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 export const Cast = () => {
   const [fetchedCast, setFetchedCast] = useState([]);
+  const moveId = useParams();
+  const id = moveId.movieId;
 
   useEffect(() => {
     // setLoading(true);
     try {
       // setError(false);
       const fetchFilm = async () => {
-        const { cast } = await getCast(670292);
+        const { cast } = await getCast(id);
 
         setFetchedCast(cast);
       };

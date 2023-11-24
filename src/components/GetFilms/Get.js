@@ -26,7 +26,7 @@ export const getSingleFilm = async id => {
 export const getCast = async id => {
   try {
     const { data } = await axios.get(
-      `https://api.themoviedb.org/3/movie/670292/credits?api_key=fed317ab3be0f2b7619ff5ef4eb716b2`
+      `https://api.themoviedb.org/3/movie/${id}/credits?api_key=fed317ab3be0f2b7619ff5ef4eb716b2`
     );
 
     return data;
@@ -38,7 +38,7 @@ export const getCast = async id => {
 export const getReviews = async id => {
   try {
     const { data } = await axios.get(
-      `https://api.themoviedb.org/3/movie/670292/reviews?api_key=fed317ab3be0f2b7619ff5ef4eb716b2`
+      `https://api.themoviedb.org/3/movie/${id}/reviews?api_key=fed317ab3be0f2b7619ff5ef4eb716b2`
     );
 
     return data;

@@ -2,8 +2,9 @@ import { getMoviesSearch } from 'components/GetFilms/Get';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { Form } from './Movies.styled';
 
- const Movies = () => {
+const Movies = () => {
   const [data, setData] = useState('');
   const [moviesSearch, setMoviesSearch] = useState([]);
   const [currentData, setCurrentData] = useState('');
@@ -41,22 +42,20 @@ import { toast } from 'react-toastify';
 
   return (
     <>
-      <header className="searchbar">
-        <form className="form" onSubmit={handleSubmit}>
-          <button type="submit" className="button">
-            <span className="button-label">Search</span>
+      <header>
+        <Form onSubmit={handleSubmit}>
+          <button type="submit">
+            <span>Search</span>
           </button>
           <input
             onChange={handleChange}
-            // value={data}
             name="data"
-            className="input"
             type="text"
             autoComplete="off"
             autoFocus
             placeholder="Search films"
           />
-        </form>
+        </Form>
       </header>
       {moviesSearch.length > 0 && (
         <ul>
@@ -71,5 +70,4 @@ import { toast } from 'react-toastify';
   );
 };
 
-
-export default Movies
+export default Movies;

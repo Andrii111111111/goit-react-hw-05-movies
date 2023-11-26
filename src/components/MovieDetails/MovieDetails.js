@@ -1,11 +1,9 @@
 import { useEffect, useState } from 'react';
-import { getSingleFilm } from '../components/GetFilms/Get';
+import { getSingleFilm } from '../GetFilms/Get';
 import { Link, Outlet, useParams } from 'react-router-dom';
-import FilmInfo from './FilmInfo';
-// import { Home } from './Home';
-// import { Cast } from './Cast';
-// import { Reviews } from './Reviews';
-export const MovieDetails = () => {
+import FilmInfo from '../FilmInfo/FilmInfo';
+
+const MovieDetails = () => {
   const moveId = useParams();
   const id = moveId.movieId;
   const [fetchedFilm, setFetchedFilm] = useState([]);
@@ -41,7 +39,7 @@ export const MovieDetails = () => {
     <>
       <>
         <Link to={'/'}>
-          <button>- Go back</button>
+          <button> Go back</button>
         </Link>
         <h1>{title}</h1>
         <p>User Score:{Math.round(vote_average) * 10}%</p>
@@ -65,3 +63,5 @@ export const MovieDetails = () => {
     </>
   );
 };
+
+export default MovieDetails;

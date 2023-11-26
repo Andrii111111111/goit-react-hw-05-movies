@@ -2,7 +2,7 @@ import { getCast } from 'components/GetFilms/Get';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-export const Cast = () => {
+const Cast = () => {
   const [fetchedCast, setFetchedCast] = useState([]);
   const moveId = useParams();
   const id = moveId.movieId;
@@ -44,3 +44,5 @@ export const Cast = () => {
     </>
   );
 };
+
+export default Cast;

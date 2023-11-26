@@ -2,7 +2,7 @@ import { getReviews } from 'components/GetFilms/Get';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-export const Reviews = () => {
+const Reviews = () => {
   const [fetchedReviews, setFetchedReviews] = useState([]);
   const moveId = useParams();
   const id = moveId.movieId;
@@ -26,6 +26,8 @@ export const Reviews = () => {
 
   return (
     <>
+      {fetchedReviews.length === 0 &&
+        'We don`t have any reviews for this movie'}
       {fetchedReviews.length > 0 && (
         <ul>
           {fetchedReviews.map(({ id, content, author }) => (
@@ -39,3 +41,5 @@ export const Reviews = () => {
     </>
   );
 };
+
+export default Reviews;

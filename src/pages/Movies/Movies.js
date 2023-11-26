@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-export const Movies = () => {
+ const Movies = () => {
   const [data, setData] = useState('');
   const [moviesSearch, setMoviesSearch] = useState([]);
   const [currentData, setCurrentData] = useState('');
@@ -70,3 +70,6 @@ export const Movies = () => {
     </>
   );
 };
+
+
+export default Movies

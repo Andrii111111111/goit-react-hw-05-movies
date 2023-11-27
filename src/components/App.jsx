@@ -3,12 +3,13 @@ import Layout from "./Layout/Layout";
 import { lazy } from "react";
 
 
+
 const Reviews = lazy(() => import("./Reviews/Reviews"));
 const Cast = lazy(() => import("./Cast/Cast"));
-const MovieDetails = lazy(() => import("./MovieDetails/MovieDetails"));
+const MovieDetails = lazy(() => import("../pages/MovieDetails/MovieDetails"));
 const Movies = lazy(() => import("../pages/Movies/Movies"));
 const Home = lazy(() => import("../pages/Home/Home"));
-
+const NotFoundPage = lazy(() => import("../components/NotFoundPage/NotFoundPage"));
 
 export const App = () => {
   return (
@@ -22,6 +23,7 @@ export const App = () => {
              <Route path="reviews" element={<Reviews />} />
           </Route>
         </Route>
+          <Route path="*" element={<NotFoundPage to={'/'} />} />
       </Routes>
     </>
   );

@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
-import { getSingleFilm } from '../GetFilms/Get';
+import { getSingleFilm } from '../../components/GetFilms/Get';
 import { Link, Outlet, useParams } from 'react-router-dom';
-import FilmInfo from '../FilmInfo/FilmInfo';
+import FilmInfo from '../../components/FilmInfo/FilmInfo';
 import { Wraper, Button } from './Movie.styled';
+import foto from '../../components/NotFoundActor/NotFoundActor.jpeg';
 
 const MovieDetails = () => {
   const moveId = useParams();
@@ -39,7 +40,7 @@ const MovieDetails = () => {
   return (
     <>
       <>
-        <Link to={'/'}>
+        <Link to={'/movies'}>
           <Button> Go back</Button>
         </Link>
         <Wraper>
@@ -56,7 +57,11 @@ const MovieDetails = () => {
             </p>
           </div>
           <img
-            src={'https://image.tmdb.org/t/p/w500' + poster_path}
+            src={
+              poster_path
+                ? 'https://image.tmdb.org/t/p/w500' + poster_path
+                : foto
+            }
             alt={title}
             width={300}
           />

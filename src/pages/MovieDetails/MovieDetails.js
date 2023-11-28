@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { getSingleFilm } from '../../components/GetFilms/Get';
-import { Link, Outlet, useParams } from 'react-router-dom';
+import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import FilmInfo from '../../components/FilmInfo/FilmInfo';
 import { Wraper, Button } from './Movie.styled';
 import foto from '../../components/NotFoundActor/NotFoundActor.jpeg';
@@ -8,6 +8,7 @@ import foto from '../../components/NotFoundActor/NotFoundActor.jpeg';
 const MovieDetails = () => {
   const moveId = useParams();
   const id = moveId.movieId;
+
   const [fetchedFilm, setFetchedFilm] = useState([]);
   const {
     poster_path,
@@ -16,6 +17,11 @@ const MovieDetails = () => {
     overview,
     genres = [],
   } = fetchedFilm;
+
+  const location = useLocation();
+  const backLink = useRef(location.state ?? '/');
+  console.log(location.state?.from);
+  console.log(location.state);
 
   // const [error, setError] = useState(false);
   // const [loading, setLoading] = useState(false);
@@ -40,7 +46,7 @@ const MovieDetails = () => {
   return (
     <>
       <>
-        <Link to={'/movies'}>
+        <Link to={backLink.current}>
           <Button> Go back</Button>
         </Link>
         <Wraper>

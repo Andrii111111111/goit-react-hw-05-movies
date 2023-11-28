@@ -3,14 +3,17 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Form } from './Movies.styled';
+import { useSearchParams } from 'react-router-dom';
 
 const Movies = () => {
   const [data, setData] = useState('');
   const [moviesSearch, setMoviesSearch] = useState([]);
   const [currentData, setCurrentData] = useState('');
+  const [params, setParams] = useSearchParams();
 
   const handleSubmit = evt => {
     setData(currentData);
+    setParams(currentData);
     evt.preventDefault();
 
     if (data.trim() === '') {
@@ -19,16 +22,18 @@ const Movies = () => {
     }
   };
 
-  const handleChange = e => {
-    setCurrentData(e.currentTarget.value);
-  };
+  // const handleChange = e => {
+  //   // setCurrentData(e.currentTarget.value);
 
+  // };
+  // const filmQuery = params.get('film');
+  // console.log(filmQuery);
   useEffect(() => {
     // setLoading(true);
     try {
       // setError(false);
       const fetchFilm = async query => {
-        const { results } = await getMoviesSearch(data);
+        const { results } = await getMoviesSearch(data.filmQuery);
 
         setMoviesSearch(results);
       };
@@ -38,7 +43,7 @@ const Movies = () => {
     } finally {
       // setLoading(false);
     }
-  }, [data]);
+  }, [data, params]);
 
   return (
     <>
@@ -48,7 +53,7 @@ const Movies = () => {
             <span>Search</span>
           </button>
           <input
-            onChange={handleChange}
+            onChange={evt => setCurrentData({ filmQuery: evt.target.value })}
             name="data"
             type="text"
             autoComplete="off"

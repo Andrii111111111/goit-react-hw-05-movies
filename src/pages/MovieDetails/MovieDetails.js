@@ -19,9 +19,10 @@ const MovieDetails = () => {
   } = fetchedFilm;
 
   const location = useLocation();
-  const backLink = useRef(location.state ?? '/');
+  const backLink = useRef(location.state?.from ?? '/');
   console.log(location.state?.from);
   console.log(location.state);
+  console.log(backLink.current);
 
   // const [error, setError] = useState(false);
   // const [loading, setLoading] = useState(false);
@@ -32,7 +33,6 @@ const MovieDetails = () => {
       // setError(false);
       const fetchFilm = async () => {
         const data = await getSingleFilm(id);
-
         setFetchedFilm(data);
       };
       fetchFilm();

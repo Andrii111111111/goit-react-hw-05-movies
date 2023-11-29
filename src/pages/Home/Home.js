@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { getFilms } from 'components/GetFilms/Get';
-import { Link } from 'react-router-dom';
 import MoviesList from 'components/MoviesList/MoviestList';
 
 const Home = () => {

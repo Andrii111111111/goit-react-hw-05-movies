@@ -1,6 +1,5 @@
 import { getMoviesSearch } from 'components/GetFilms/Get';
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Form } from './Movies.styled';
 import { useSearchParams } from 'react-router-dom';

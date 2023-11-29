@@ -1,40 +1,30 @@
 import { getMoviesSearch } from 'components/GetFilms/Get';
 import { useState, useEffect } from 'react';
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
 import { Form } from './Movies.styled';
 import { useSearchParams } from 'react-router-dom';
 import MoviesList from 'components/MoviesList/MoviestList';
 
 const Movies = () => {
-  const [data, setData] = useState('');
+  // const [data, setData] = useState('');
   const [fetchedFilms, setFetchedFilms] = useState([]);
-  const [currentData, setCurrentData] = useState('');
-  const [params, setParams] = useSearchParams();
+  // const [currentData, setCurrentData] = useState('');
+  const [params, setSearchParams] = useSearchParams();
 
   const handleSubmit = evt => {
-    setData(currentData);
-    setParams(currentData);
-
     evt.preventDefault();
-
-    if (data.trim() === '') {
-      toast.error('Please enter your search details.');
-      return;
-    }
+    const form = evt.target;
+    const searchValue = form.elements.data.value;
+    setSearchParams({ query: searchValue });
   };
 
-  // const handleChange = e => {
-  //   // setCurrentData(e.currentTarget.value);
-
-  // };
-  // const filmQuery = params.get('film');
-  // console.log(filmQuery);
   useEffect(() => {
+    const filmQuery = params.get('query');
     // setLoading(true);
     try {
       // setError(false);
-      const fetchFilm = async query => {
-        const { results } = await getMoviesSearch(data.filmQuery);
+      const fetchFilm = async () => {
+        const { results } = await getMoviesSearch(filmQuery);
 
         setFetchedFilms(results);
       };
@@ -44,7 +34,7 @@ const Movies = () => {
     } finally {
       // setLoading(false);
     }
-  }, [data, params]);
+  }, [params]);
 
   return (
     <>
@@ -54,7 +44,6 @@ const Movies = () => {
             <span>Search</span>
           </button>
           <input
-            onChange={evt => setCurrentData({ filmQuery: evt.target.value })}
             name="data"
             type="text"
             autoComplete="off"

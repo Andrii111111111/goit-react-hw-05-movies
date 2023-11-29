@@ -20,7 +20,7 @@ const MovieDetails = () => {
 
   const location = useLocation();
   const backLink = useRef(location.state?.from ?? '/');
-  console.log(location);
+
   // const [error, setError] = useState(false);
   // const [loading, setLoading] = useState(false);
 

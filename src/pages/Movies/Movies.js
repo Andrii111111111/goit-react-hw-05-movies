@@ -4,16 +4,18 @@ import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Form } from './Movies.styled';
 import { useSearchParams } from 'react-router-dom';
+import MoviesList from 'components/MoviesList/MoviestList';
 
 const Movies = () => {
   const [data, setData] = useState('');
-  const [moviesSearch, setMoviesSearch] = useState([]);
+  const [fetchedFilms, setFetchedFilms] = useState([]);
   const [currentData, setCurrentData] = useState('');
   const [params, setParams] = useSearchParams();
 
   const handleSubmit = evt => {
     setData(currentData);
     setParams(currentData);
+
     evt.preventDefault();
 
     if (data.trim() === '') {
@@ -35,7 +37,7 @@ const Movies = () => {
       const fetchFilm = async query => {
         const { results } = await getMoviesSearch(data.filmQuery);
 
-        setMoviesSearch(results);
+        setFetchedFilms(results);
       };
       fetchFilm();
     } catch (error) {
@@ -62,15 +64,7 @@ const Movies = () => {
           />
         </Form>
       </header>
-      {moviesSearch.length > 0 && (
-        <ul>
-          {moviesSearch.map(dat => (
-            <li key={dat.id}>
-              <Link to={`/movies/${dat.id}`}>{dat.original_title}</Link>
-            </li>
-          ))}
-        </ul>
-      )}
+      {fetchedFilms.length > 0 && <MoviesList fetchedFilms={fetchedFilms} />}
     </>
   );
 };

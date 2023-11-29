@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { getFilms } from 'components/GetFilms/Get';
 import { Link } from 'react-router-dom';
+import MoviesList from 'components/MoviesList/MoviestList';
 
- const Home = () => {
+const Home = () => {
   const [fetchedFilms, setFetchedFilms] = useState([]);
 
   // const [error, setError] = useState(false);
@@ -29,18 +30,9 @@ import { Link } from 'react-router-dom';
     <>
       <h2>Trending today</h2>
 
-      {fetchedFilms.length > 0 && (
-        <ul>
-          {fetchedFilms.map(dat => (
-            <li key={dat.id}>
-              <Link to={`/movies/${dat.id}`}>{dat.original_title}</Link>
-            </li>
-          ))}
-        </ul>
-      )}
+      {fetchedFilms.length > 0 && <MoviesList fetchedFilms={fetchedFilms} />}
     </>
   );
 };
 
-
-export default Home
+export default Home;
